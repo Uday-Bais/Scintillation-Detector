@@ -3,8 +3,6 @@
 A compact, professional **Geant4-based** example for building and visualizing a scintillation detector simulation.  
 This project provides a single executable (`sim`) that assembles detector geometry, physics, and user actions, and configures an interactive visualization environment.
 
-> **Status:** Experimental — intended as an educational / example project and a starting point for detector development.
-
 ---
 
 ## 📘 Table of Contents
@@ -17,7 +15,6 @@ This project provides a single executable (`sim`) that assembles detector geomet
 - [Physics Processes](#physics-processes)
 - [Output Data and Analysis](#output-data-and-analysis)
 - [Requirements](#requirements)
-- [Repository Layout](#repository-layout)
 - [Build (Recommended)](#build-recommended)
 - [Running the Simulation](#running-the-simulation)
 - [Configuration and Common Options](#configuration-and-common-options)
@@ -268,34 +265,6 @@ During simulation, the console displays:
 
 ---
 
-## 📁 Repository Layout
-
-```
-Scintillation-Detector/
-├── CMakeLists.txt     # Build configuration; finds Geant4, builds sim
-├── sim.cc             # Main entry point; sets up detector, physics, actions, UI, visualization
-├── include/           # Header files
-│   ├── construction.hh   # Detector geometry definition
-│   ├── physics.hh        # Physics list configuration
-│   ├── action.hh         # User action initialization
-│   ├── generator.hh      # Primary particle generator
-│   ├── detector.hh       # Sensitive detector for photon hits
-│   ├── run.hh            # Run action (file I/O)
-│   ├── event.hh          # Event action (per-event counting)
-│   ├── stepping.hh       # Stepping action (photon tracking)
-│   └── photon_counter.hh # Global photon counter
-├── src/               # Source implementations (.cc files)
-│   ├── construction.cc   # Geometry, materials, optical surfaces
-│   ├── physics.cc        # EM + optical + decay physics
-│   ├── action.cc         # Action initialization
-│   ├── generator.cc      # Gamma ray source
-│   ├── detector.cc       # Photon hit processing
-│   ├── run.cc            # ROOT file output
-│   ├── event.cc          # Event-level bookkeeping
-│   ├── stepping.cc       # Optical photon counting
-│   └── photon_counter.cc # Thread-safe counter
-└── macros/            # Example macro scripts (.mac) copied to build dir
-```
 
 ---
 
