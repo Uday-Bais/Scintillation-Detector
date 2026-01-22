@@ -13,16 +13,11 @@ This project provides a single executable (`sim`) that assembles detector geomet
 - [Configurable Parameters in sim.cc](#configurable-parameters-in-simcc)
 - [Available Scintillator Materials](#available-scintillator-materials)
 - [Physics Processes](#physics-processes)
-- [Output Data and Analysis](#output-data-and-analysis)
 - [Requirements](#requirements)
 - [Build (Recommended)](#build-recommended)
 - [Running the Simulation](#running-the-simulation)
 - [Configuration and Common Options](#configuration-and-common-options)
 - [Visualization and UI Commands](#visualization-and-ui-commands)
-- [Development Notes](#development-notes)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [Contact](#contact)
 
 ---
 
@@ -205,45 +200,6 @@ The simulation includes comprehensive physics modeling:
 
 ---
 
-## 📈 Output Data and Analysis
-
-### ROOT File Output (`output.root`)
-
-The simulation generates a ROOT file containing two ntuples:
-
-#### Ntuple 0: "Hits" — Individual Photon Hits
-| Column | Type | Description |
-|--------|------|-------------|
-| fEvent | Int | Event ID |
-| fX | Int | Hit X position (mm) |
-| fY | Int | Hit Y position (mm) |
-| fZ | Int | Hit Z position (mm) |
-
-#### Ntuple 1: "Photons" — Per-Event Photon Count
-| Column | Type | Description |
-|--------|------|-------------|
-| EventID | Int | Event ID |
-| NPhotons | Int | Number of optical photons produced |
-
-### Analysis Example (ROOT/Python)
-
-```python
-import ROOT
-
-# Open the output file
-f = ROOT.TFile("output.root")
-
-# Get photon production ntuple
-photons = f.Get("Photons")
-
-# Plot photon yield distribution
-photons.Draw("NPhotons")
-
-# Calculate mean photon yield
-photons.Draw("NPhotons>>h1")
-h1 = ROOT.gDirectory.Get("h1")
-print(f"Mean photons/event: {h1.GetMean():.1f}")
-```
 
 ### Console Output
 
